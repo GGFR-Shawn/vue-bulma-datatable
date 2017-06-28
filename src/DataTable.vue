@@ -4,7 +4,7 @@
             <thead>
                 <tr>
                     <slot v-for="c in columns" :name="'table-header-' + c.field">
-                        <th class="c.class" @click="toggleSort(c.field)">
+                        <th :class="c.class" @click="toggleSort(c)">
                             <div class="column-controls">
                                 <span>{{ c.label }}</span>
                                 <span class="icon is-small" v-if="c.sortable">
@@ -26,7 +26,7 @@
                 </tr>
                 <tr v-for="row in showedRows" @click="rowClick(row)">
                     <slot name="table-body" :row="row">
-                        <td v-for="c in columns"> {{row[c.field]}} </td>
+                        <td v-for="c in columns"> {{ row[c.field] }} </td>
                     </slot>
                 </tr>
             </tbody>
@@ -67,8 +67,11 @@
         },
         watch: {
             rows: function(){
-                this.showedRows = this.rows;
+                this.showedRows = JSON.parse(JSON.stringify(this.rows));
             }
+        },
+        mounted: function () {
+            this.showedRows = JSON.parse(JSON.stringify(this.rows));
         },
         computed: {
             filterRow: function () {
@@ -80,13 +83,15 @@
                 if (this.click) this.$emit('row-click', row);
             },
             toggleSort: function(column){
-                if (column === this.sort.column) {
-                    this.sort.desc = !this.sort.desc;
-                } else {
-                    this.sort.column = column;
-                    this.sort.desc = true;
+                if(column.sortable){
+                    if (column.field === this.sort.column) {
+                        this.sort.desc = !this.sort.desc;
+                    } else {
+                        this.sort.column = column.field;
+                        this.sort.desc = true;
+                    }
+                    this.sortData();
                 }
-                this.sortData();
             },
             sortData() {
                 this.showedRows = this.showedRows.sort(

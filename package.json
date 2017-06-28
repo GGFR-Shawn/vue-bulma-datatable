@@ -1,8 +1,19 @@
 {
-  "name": "vue-bulma-datatable",
-  "version": "0.1.0",
-  "description": "Data table using bulma (minimally), can sort, filter, and use templates. ",
-  "main": "src/DataTable.vue",
-  "author": "Andres Islas <aislasq@gmail.com>",
-  "license": "MIT"
+    "name": "vue-bulma-datatable",
+    "version": "0.1.0",
+    "description": "Data table using bulma (minimally), can sort, filter, and use templates.",
+    "main": "src/DataTable.vue",
+    "peerDependencies": {
+        "bulma": ">=0.2",
+        "vue": ">=2",
+        "font-awesome": ">=4.7.0"
+    },
+    "keywords": ["Vuejs", "Vue", "Bulma", "datatable", "table"],
+    "bugs": "https://github.com/aislasq/vue-bulma-datatable/issues",
+    "repository": {
+        "url": "https://github.com/aislasq/vue-bulma-datatable",
+        "type": "git"
+    },
+    "author": "Andres Islas <aislasq@gmail.com>",
+    "license": "MIT"
 }

@@ -1,8 +1,8 @@
 # DataTable
 
-Tags Box component for Vue with Bulma. Each comma separated value in a textarea input turns into a tag.
+Data table using bulma (minimally), can sort, filter, and use templates.
 
-![alt text](https://github.com/aislasq/vue-bulma-datatable/blob/master/images/image.png "Logo Title Text 1")
+![Formatted Table](https://github.com/aislasq/vue-bulma-datatable/blob/master/images/format.png "Formatted Table")
 
 
 ## Installation
@@ -36,6 +36,9 @@ $ npm install https://github.com/aislasq/vue-bulma-datatable.git
 ## Examples:
 
 ### Simple:
+
+![Simple Table](https://github.com/aislasq/vue-bulma-datatable/blob/master/images/simple.png "Simple Table")
+
 ```vue
 <template>
     <div>
@@ -95,6 +98,9 @@ $ npm install https://github.com/aislasq/vue-bulma-datatable.git
 ```
 
 ### Sortable
+
+![Sortable Table](https://github.com/aislasq/vue-bulma-datatable/blob/master/images/sortable.png "Sortable Table")
+
 ```vue
 <script>
     export default {
@@ -127,6 +133,9 @@ $ npm install https://github.com/aislasq/vue-bulma-datatable.git
 ```
 
 ### Filterable:
+
+![Filterable Table](https://github.com/aislasq/vue-bulma-datatable/blob/master/images/filterable.png "Filterable Table")
+
 ```vue
 <script>
     export default {
@@ -160,6 +169,9 @@ $ npm install https://github.com/aislasq/vue-bulma-datatable.git
     }
 ```
 ### Format cells:
+
+![Formatted Table](https://github.com/aislasq/vue-bulma-datatable/blob/master/images/format.png "Formatted Table")
+
 ```vue
 <template>
     <div>

@@ -27,10 +27,12 @@ $ npm install https://github.com/aislasq/vue-bulma-datatable.git
 |field|true|String|The field to print the rows with, it will also serve for the filter and sorting. It must match the rows' key.|
 |sortable|false|Boolean / false|If true it enables sorting for the column.|
 |filterable|false|Boolean / false|If true it enables filtering for the column.|
+|headClass|false|String|Class added to the header `<th></th>` of the column|
+|bodyClass|false|String|Class added to all the cells `<td></td>` that belong to the column.|
 
 #### Methods: 
 
-* **row-click:** Called after a row was clicked ```<tr></tr>``` only if prop ```click = true```.
+* **row-click:** Called after a row was clicked `<tr></tr>` only if prop `click = true`.
 
 ## Examples:
 

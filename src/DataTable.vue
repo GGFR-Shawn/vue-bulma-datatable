@@ -4,7 +4,7 @@
             <thead>
                 <tr>
                     <slot v-for="c in columns" :name="'table-header-' + c.field">
-                        <th :class="c.class" @click="toggleSort(c)">
+                        <th :class="c.headClass" @click="toggleSort(c)">
                             <div class="column-controls">
                                 <span>{{ c.label }}</span>
                                 <span class="icon is-small" v-if="c.sortable">
@@ -26,7 +26,7 @@
                 </tr>
                 <tr v-for="row in showedRows" @click="rowClick(row)">
                     <slot name="table-body" :row="row">
-                        <td v-for="c in columns"> {{ row[c.field] }} </td>
+                        <td v-for="c in columns" :class="c.bodyClass"> {{ row[c.field] }} </td>
                     </slot>
                 </tr>
             </tbody>

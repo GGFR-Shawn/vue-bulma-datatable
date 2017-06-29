@@ -29,6 +29,7 @@ $ npm install https://github.com/aislasq/vue-bulma-datatable.git
 |filterable|false|Boolean / false|If true it enables filtering for the column.|
 |headClass|false|String|Class added to the header `<th></th>` of the column|
 |bodyClass|false|String|Class added to all the cells `<td></td>` that belong to the column.|
+|width|false|String|The width of the column. Ex. '50px'|
 
 #### Methods: 
 

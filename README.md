@@ -1,9 +1,8 @@
 # DataTable
 
-Data table using bulma (minimally), can sort, filter, and use templates.
+Data table using bulma (minimally), can sort, filter, and use templates. Not recomended for more than 1000 rows.
 
 ![Formatted Table](https://github.com/aislasq/vue-bulma-datatable/blob/master/images/format.png "Formatted Table")
-
 
 ## Installation
 ```
@@ -191,10 +190,6 @@ $ npm install https://github.com/aislasq/vue-bulma-datatable.git
     </div>
 </template>
 ```
-
-##TODO
-
-* **Filters** Apply more than one filter.
 
 ## Badges
 

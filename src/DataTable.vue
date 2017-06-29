@@ -62,6 +62,7 @@
                     column: '',
                     desc: true
                 },
+                filters: [],
                 showedRows: []
             }
         },
@@ -111,19 +112,43 @@
                 }
             },
             filterData(column, query) {
-                if (column === undefined || this.rows === undefined || query === undefined || query === "") {
-                    this.showedRows = this.rows;
+                if (column === undefined || this.rows === undefined || query === undefined) {
+                    this.filters = [];
+                    this.applyFilters();
                     return;
                 }
-
-                this.showedRows = [];
-                this.rows.forEach( (row) => {
-                    let search = query.toUpperCase().trim();
-                    if (row[column.field].toUpperCase().indexOf(search) !== -1) {
-                        this.showedRows.push(row);
+                let index = this.filters.findIndex( (e) => e.field === column.field );
+                if(query === ""){
+                    if(index !== -1) this.filters.splice(index, 1);
+                }
+                else{
+                    if(index >= 0 ){
+                        this.filters[index].query = query;
                     }
-                });
+                    else{
+                        this.filters.push({field: column.field, query: query});
+                    }
+                }
+                this.applyFilters();
+            },
+            applyFilters: function () {
+                this.showedRows = this.rows;
+                if(this.filters.length === 0) return;
 
+                this.filteredRows = [];
+                this.filters.forEach(
+                    (f) =>{
+                        this.filteredRows = [];
+                        this.showedRows.forEach( (row) => {
+                            let search = f.query.toUpperCase().trim();
+                            if (row[f.field].toUpperCase().indexOf(search) !== -1) {
+                                this.filteredRows.push(row);
+                            }
+                        });
+                        this.showedRows = this.filteredRows;
+                    }
+                );
+                this.sortData();
             }
         }
     }

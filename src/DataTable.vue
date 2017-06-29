@@ -4,7 +4,7 @@
             <thead>
                 <tr>
                     <slot v-for="column in columns" :name="'table-header-' + column.field" :column="column">
-                        <th :class="column.headClass" @click="toggleSort(c)" :width="column.width || ''">
+                        <th :class="column.headClass" @click="toggleSort(column)" :width="column.width || ''">
                             <div class="column-controls">
                                 <span>{{ column.label }}</span>
                                 <span class="icon is-small" v-if="column.sortable">

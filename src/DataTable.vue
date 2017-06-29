@@ -3,13 +3,13 @@
         <table :class="tableClass">
             <thead>
                 <tr>
-                    <slot v-for="c in columns" :name="'table-header-' + c.field">
-                        <th :class="c.headClass" @click="toggleSort(c)">
+                    <slot v-for="column in columns" :name="'table-header-' + column.field" :column="column">
+                        <th :class="column.headClass" @click="toggleSort(c)" :width="column.width + 'px' || ''">
                             <div class="column-controls">
-                                <span>{{ c.label }}</span>
-                                <span class="icon is-small" v-if="c.sortable">
-                                    <i v-if="sort.column == c.field && sort.desc" class="fa fa-sort-desc"></i>
-                                    <i v-else-if="sort.column == c.field && !sort.desc" class="fa fa-sort-asc"></i>
+                                <span>{{ column.label }}</span>
+                                <span class="icon is-small" v-if="column.sortable">
+                                    <i v-if="sort.column == column.field && sort.desc" class="fa fa-sort-desc"></i>
+                                    <i v-else-if="sort.column == column.field && !sort.desc" class="fa fa-sort-asc"></i>
                                     <i class="fa fa-sort" v-else></i>
                                 </span>
                             </div>
@@ -19,14 +19,14 @@
             </thead>
             <tbody>
                 <tr v-if="filterRow">
-                    <td v-for="c in columns" v-if="c.filterable">
-                        <input type="text" class="input" :placeholder="'Filter ' + c.label" @input="filterData(c, $event.target.value.toUpperCase())">
+                    <td v-for="column in columns" v-if="column.filterable">
+                        <input type="text" class="input" :placeholder="'Filter ' + column.label" @input="filterData(column, $event.target.value.toUpperCase())">
                     </td>
                     <td v-else></td>
                 </tr>
                 <tr v-for="row in showedRows" @click="rowClick(row)">
                     <slot name="table-body" :row="row">
-                        <td v-for="c in columns" :class="c.bodyClass"> {{ row[c.field] }} </td>
+                        <td v-for="column in columns" :class="column.bodyClass"> {{ row[column.field] }} </td>
                     </slot>
                 </tr>
             </tbody>

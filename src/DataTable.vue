@@ -22,7 +22,7 @@
                     <td v-for="column in columns" v-if="column.filterable" :class="column.bodyClass">
                         <input type="text" class="input" :placeholder="'Filter ' + column.label" @input="filterData(column, $event.target.value.toUpperCase())">
                     </td>
-                    <td v-else></td>
+                    <td v-else :class="column.bodyClass"></td>
                 </tr>
                 <tr v-for="row in showedRows" @click="rowClick(row)">
                     <slot name="table-body" :row="row">

@@ -19,7 +19,7 @@
             </thead>
             <tbody>
                 <tr v-if="filterRow">
-                    <td v-for="column in columns" v-if="column.filterable">
+                    <td v-for="column in columns" v-if="column.filterable" :class="column.bodyClass">
                         <input type="text" class="input" :placeholder="'Filter ' + column.label" @input="filterData(column, $event.target.value.toUpperCase())">
                     </td>
                     <td v-else></td>
